@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: dream-feign
+  profiles:
+    active: ${config.profile:dev}
+  
+server:
+  port: 9003
+  tomcat:
+    uri-encoding: UTF-8
+
+eureka:
+  instance:
+    non-secure-port: ${server.port:9004}
+    preferIpAddress: true
+    metadata-map:
+       instanceId: ${spring.application.name}:${random.value}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${eureka.defaultZone:http://localhost:8761/eureka/}

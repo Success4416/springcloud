@@ -1,12 +1,12 @@
 spring:
   application:
-    name: dream-admin
+    name: dream-customer
   profiles:
     active: ${config.profile:dev}
   cloud:
     config:
       uri: ${spring.cloud.url:http://127.0.0.1:8888}
-      name: dream-admin
+      name: dream-customer
       profile: ${config.profile:dev}
 
     loadbalancer:
@@ -30,16 +30,16 @@ spring:
     minEvictableIdleTimeMillis: 300000
     poolPreparedStatements: true
 mybatis:
-  typeAliasesPackage: com.lenily.dreamadmin.entity
-  mapperLocations: classpath:com/lenily/dreamadmin/mapper/*.xml
+  typeAliasesPackage: com.lenily.dreamcustomer.entity
+  mapperLocations: classpath:com/lenily/dreamcustomer/mapper/*.xml
 server:
-  port: 9001
+  port: 9002
   tomcat:
     uri-encoding: UTF-8
 
 eureka:
   instance:
-    non-secure-port: ${server.port:9001}
+    non-secure-port: ${server.port:9002}
     preferIpAddress: true
     metadata-map:
        instanceId: ${spring.application.name}:${random.value}

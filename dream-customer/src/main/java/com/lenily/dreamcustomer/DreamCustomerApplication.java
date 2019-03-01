@@ -1,4 +1,4 @@
-package com.lenily.dreamadmin;
+package com.lenily.dreamcustomer;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -10,11 +10,11 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableEurekaClient
-@MapperScan("com.lenily.dreamadmin.mapper")
-public class DreamAdminApplication {
+@MapperScan("com.lenily.dreamcustomer.mapper")
+public class DreamCustomerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DreamAdminApplication.class, args);
+		SpringApplication.run(DreamCustomerApplication.class, args);
 	}
 
 	@Bean
