@@ -1,0 +1,33 @@
+server:
+  port: 8888  #\u670D\u52A1\u91C7\u7528\u7684\u7AEF\u53E3\u53F7
+
+eureka:
+  instance:
+    preferIpAddress: true
+    non-secure-port: ${server.port:8888}
+    metadata-map:
+      instanceId: ${spring.application.name}:${random.value}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${eureka.defaultZone:http://localhost:8761/eureka/}
+
+spring:
+  profiles:
+    active: native  #\u91C7\u7528\u914D\u7F6E\u65B9\u5F0F\uFF1Anative\u3001git\u3001svn\u7B49
+  application:
+    name: dream-config  #\u5FAE\u670D\u52A1\u540D\u79F0
+
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config  #\u672C\u5730\u914D\u7F6E\u6587\u4EF6\u5B58\u653E\u8DEF\u5F84
+#        git:
+#          uri:
+#          #searchPaths: baolianX/configs
+#          username:
+#          password:
+
+
