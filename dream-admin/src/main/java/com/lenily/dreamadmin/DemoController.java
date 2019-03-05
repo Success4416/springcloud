@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.lenily.dreamadmin.service.DemoService;
+
 @RestController
 public class DemoController {
 
@@ -19,8 +21,9 @@ public class DemoController {
 		// ResponseEntity<Integer> forEntity =
 		// restTemplate.getForEntity("http://dream-customer/getAccount", Integer.class);
 
-		return demoService.getMoney();
-
+		// return demoService.getMoney();
+		demoService.getMoney();
+		return null;
 	}
 
 }

@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fescar.core.context.RootContext;
-import com.alibaba.fescar.spring.annotation.GlobalTransactional;
 import com.lenily.dreamcustomer.entity.Account;
 import com.lenily.dreamcustomer.mapper.AccountMapper;
 import com.lenily.dreamcustomer.mapper.OrderMapper;
@@ -31,9 +30,9 @@ public class DemoServiceImpl implements DemoService {
 		selectByPrimaryKey.setMoney(9090909);
 		accountMapper.updateByPrimaryKey(selectByPrimaryKey);
 
-		if (1 == 1) {
-			throw new RuntimeException();
-		}
+		/*
+		 * if (1 == 1) { throw new RuntimeException(); }
+		 */
 
 		return selectByPrimaryKey.getMoney();
 	}

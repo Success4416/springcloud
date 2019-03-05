@@ -14,6 +14,8 @@ import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.fescar.rm.datasource.DataSourceProxy;
 import com.alibaba.fescar.spring.annotation.GlobalTransactionScanner;
 
+import feign.RequestInterceptor;
+
 @Configuration
 public class FescarConfig {
 
@@ -87,5 +89,16 @@ public class FescarConfig {
 	@Bean
 	public GlobalTransactionScanner globalTransactionScanner() {
 		return new GlobalTransactionScanner("account-gts-fescar-admin", "my_test_tx_group");
+	}
+
+	@Bean
+	public RequestInterceptor requestInterceptor() {
+		FeignBasicRequestInterceptor requestInterceptor = new FeignBasicRequestInterceptor();
+		return requestInterceptor;
+	}
+
+	@Bean
+	public FescarXidFilter fescarXidFilter() {
+		return new FescarXidFilter();
 	}
 }

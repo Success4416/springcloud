@@ -1,6 +1,5 @@
-package com.lenily.dreamcustomer;
+package com.lenily.dreamadmin;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -12,13 +11,12 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableEurekaClient
-@MapperScan("com.lenily.dreamcustomer.mapper")
-@EnableFeignClients
 @EnableDiscoveryClient
-public class DreamCustomerApplication {
+@EnableFeignClients
+public class DreamFeignApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DreamCustomerApplication.class, args);
+		SpringApplication.run(DreamFeignApplication.class, args);
 	}
 
 	@Bean
