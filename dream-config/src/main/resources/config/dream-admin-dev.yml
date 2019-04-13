@@ -8,10 +8,13 @@ spring:
       uri: ${spring.cloud.url:http://127.0.0.1:8888}
       name: dream-admin
       profile: ${config.profile:dev}
-
+    alibaba:
+      fescar:
+        tx-service-group: my_test_tx_group
     loadbalancer:
       retry:
         enabled: false
+   
 
   thymeleaf:
     prefix: classpath:/views
@@ -48,3 +51,14 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: ${eureka.defaultZone:http://localhost:8761/eureka/}
+logging:
+  level:
+   org:
+     springframework:
+       cloud:
+         alibaba:
+           fescar:
+             web: debug
+   com:
+     alibaba:
+       fescar: debug
