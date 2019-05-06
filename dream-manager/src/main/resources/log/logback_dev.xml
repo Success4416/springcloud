@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property name="email_to" value="success4416@163.com" />
+	<property name="environment" value="dev"/>
+	<property name="LOG_BASEDIR" value="/Users/success/Documents/sources/logs/"/>
+	<include resource="log/logback.xml"/>
+
+	<contextName>${SYSTEM_NAME}</contextName>
+
+	<root level="INFO">
+		<!--<appender-ref ref="CONSOLE" />-->
+		<!--<appender-ref ref="INFO_FILE" />-->
+		<!--<appender-ref ref="OPERATE_FILE"/>-->
+		<!--<appender-ref ref="ERROR_FILE" />-->
+		<appender-ref ref="EMAIL" />
+	</root>
+
+</configuration>

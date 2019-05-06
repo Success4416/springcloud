@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <property name="SYSTEM_NAME" value="adminUI"/>
+    <property name="ENCODING" value="UTF8"/>
+    <property name="smtpHost" value="smtp.163.com" />
+    <property name="username" value="success4416@163.com" />
+    <property name="password" value="chenggong123" />
+    <property name="smtpPort" value="994"/>
+    <property name="SSL" value="true" />
+    <property name="email_subject" value="${SYSTEM_NAME}（${environment}}）服务异常预警" />
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.html.HTMLLayout">
+            <pattern>%-4relative [%hostName %localIp][%thread] %-5level %logger{35} - %msg %n</pattern>
+        </layout>
+        <!--<encoder>-->
+            <!--<charset>${ENCODING}</charset>-->
+        <!--</encoder>-->
+    </appender>
+
+    <!-- 错误预警 -->
+    <appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
+        <smtpHost>${smtpHost}</smtpHost>
+        <Username>${username}</Username>
+        <Password>${password}</Password>
+        <smtpPort>${smtpPort}</smtpPort>
+        <SSL>${SSL}</SSL>
+        <to>${email_to}</to>
+        <!--<toBean>com.com.siebrex.market.car.common.log.ToEmailExtraField</toBean>-->
+        <from>${username}</from>
+        <subject>${email_subject}</subject>
+        <asynchronousSending>true</asynchronousSending>
+        <layout class="ch.qos.logback.classic.html.HTMLLayout">
+            <pattern>%date [%hostName] [%localIp]  %-5level %logger{35} - %message%n</pattern>
+        </layout>
+
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!--&lt;!&ndash; info及其以上级别日志输出至文件 &ndash;&gt;-->
+    <!--<appender name="INFO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+        <!--<file>${LOG_BASEDIR}/${SYSTEM_NAME}/info.log</file>-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+            <!--<FileNamePattern>${LOG_BASEDIR}/${SYSTEM_NAME}/info_%d{yyyy-MM-dd}.log</FileNamePattern>-->
+            <!--<maxHistory>30</maxHistory>-->
+        <!--</rollingPolicy>-->
+
+        <!--<layout class="ch.qos.logback.classic.html.HTMLLayout">-->
+            <!--<pattern>[%date{yyyy-MM-dd HH:mm:ss}] [%hostName %localIp] [%-5level] [%logger:%line] &#45;&#45;%mdc{client} %msg%n</pattern>-->
+        <!--</layout>-->
+
+        <!--<filter class="ch.qos.logback.classic.filter.LevelFilter">-->
+            <!--<level>INFO</level>-->
+            <!--<onMatch>ACCEPT</onMatch>-->
+            <!--<onMismatch>ACCEPT</onMismatch>-->
+        <!--</filter>-->
+    <!--</appender>-->
+
+    <!--&lt;!&ndash; 操作日志输出至文件 &ndash;&gt;-->
+    <!--<appender name="OPERATE_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+        <!--<file>${LOG_BASEDIR}/${SYSTEM_NAME}/operate.log</file>-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+            <!--<FileNamePattern>${LOG_BASEDIR}/${SYSTEM_NAME}/operate_%d{yyyy-MM-dd}.log</FileNamePattern>-->
+            <!--<maxHistory>30</maxHistory>-->
+        <!--</rollingPolicy>-->
+
+        <!--<layout class="ch.qos.logback.classic.html.HTMLLayout">-->
+            <!--<pattern>[%date{yyyy-MM-dd HH:mm:ss}] [%hostName %localIp] [%-5level] [%logger:%line] &#45;&#45;%mdc{client} %msg%n</pattern>-->
+        <!--</layout>-->
+
+        <!--<filter class="ch.qos.logback.core.filter.EvaluatorFilter">-->
+            <!--<level>INFO</level>-->
+            <!--<marker>operate</marker>-->
+            <!--<onMatch>ACCEPT</onMatch>-->
+            <!--<onMismatch>DENY</onMismatch>-->
+        <!--</filter>-->
+    <!--</appender>-->
+
+    <!--&lt;!&ndash; error级别日志输出至文件 &ndash;&gt;-->
+    <!--<appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+        <!--<file>${LOG_BASEDIR}/${SYSTEM_NAME}/error.log</file>-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+            <!--<FileNamePattern>${LOG_BASEDIR}/${SYSTEM_NAME}/error_%d{yyyy-MM-dd}.log</FileNamePattern>-->
+            <!--<maxHistory>30</maxHistory>-->
+        <!--</rollingPolicy>-->
+
+        <!--<layout class="ch.qos.logback.classic.html.HTMLLayout">-->
+            <!--<pattern>[%date{yyyy-MM-dd HH:mm:ss}] [%hostName %localIp] [%-5level] [%logger:%line] &#45;&#45;%mdc{client} %msg%n</pattern>-->
+        <!--</layout>-->
+
+        <!--<filter class="ch.qos.logback.classic.filter.LevelFilter">-->
+            <!--<level>ERROR</level>-->
+            <!--<onMatch>ACCEPT</onMatch>-->
+            <!--<onMismatch>DENY</onMismatch>-->
+        <!--</filter>-->
+    <!--</appender>-->
+
+    <!-- <logger name="org.springframework.jdbc.core.StatementCreatorUtils"
+        additivity="false" level="TRACE">
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="org.springframework.jdbc.core" additivity="true">
+        <level value="DEBUG" />
+        <appender-ref ref="STDOUT" />
+    </logger> -->
+    <!--<logger name="java.sql.Connection" additivity="false">-->
+        <!--<level value="WARN" />-->
+        <!--<appender-ref ref="CONSOLE" />-->
+    <!--</logger>-->
+    <!--<logger name="java.sql.Statement" additivity="false">-->
+        <!--<level value="WARN" />-->
+        <!--<appender-ref ref="CONSOLE" />-->
+    <!--</logger>-->
+    <!--<logger name="java.sql.PreparedStatement" additivity="false">-->
+        <!--<level value="WARN" />-->
+        <!--<appender-ref ref="CONSOLE" />-->
+    <!--</logger>-->
+    <!--<logger name="java.sql.ResultSet" additivity="false">-->
+        <!--<level value="WARN" />-->
+        <!--<appender-ref ref="CONSOLE" />-->
+    <!--</logger>-->
+
+    <!--<logger name="org.hibernate.type.descriptor.sql.BasicBinder" additivity="false"  level="TRACE">-->
+        <!--<appender-ref ref="CONSOLE"/>-->
+    <!--</logger>-->
+</included>

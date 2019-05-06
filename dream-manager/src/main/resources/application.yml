@@ -1,0 +1,60 @@
+spring:
+  application:
+    name: dream-manager
+  profiles:
+    active: ${config.profile:dev}
+  cloud:
+    config:
+      uri: ${spring.cloud.url:http://127.0.0.1:8888}
+      name: dream-manager
+      profile: ${config.profile:dev}
+
+    loadbalancer:
+      retry:
+        enabled: false
+
+  thymeleaf:
+    prefix: classpath:/views
+    suffix: .html
+    cache: false
+
+  http:
+    encoding:
+      charset: utf-8
+
+
+server:
+  port: 9001
+  tomcat:
+    uri-encoding: UTF-8
+
+eureka:
+  instance:
+    non-secure-port: ${server.port:9001}
+    preferIpAddress: true
+    metadata-map:
+       instanceId: ${spring.application.name}:${random.value}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${eureka.defaultZone:http://localhost:8761/eureka/}
+logging:
+  config: classpath:logback.xml
+#  path: ../logs
+#  file: ../logs/file.log
+#  level:
+#    root: info
+#logging:
+#  config: classpath:log/logback_${spring.profiles.active:dev}.xml
+exceptionnotice:
+  notice-type: dingding
+  dingding:
+    phone-num: 18515279287
+    web-hook: https://oapi.dingtalk.com/robot/send?access_token=66ee1b7ef0799483664c56f171658b3c2ac21d294569c68b90e08c90cc0d76fb
+
+
+success:
+  name: 成功
+  sex: 男
+  age: 18

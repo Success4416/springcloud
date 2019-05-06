@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+
+    <!--邮件设置-->
+    <property name="smtpHost" value="smtp.263.net"/>
+    <property name="smtpPort" value="25"/>
+    <property name="mailFrom" value="chenggong@navasmart.com"/>
+    <property name="username" value="chenggong@navasmart.com"/>
+    <property name="mailTo" value="chenggong@navasmart.com"/>
+    <property name="password" value="adm888"/>
+    <property name="SSL" value="false"/>
+    <property name="mailSubject" value="系统异常"/>
+
+    <appender name="MAIL" class="ch.qos.logback.classic.net.SMTPAppender">
+        <smtpHost>${smtpHost}</smtpHost>
+        <smtpPort>${smtpPort}</smtpPort>
+        <username>${username}</username>
+        <password>${password}</password>
+        <SSL>${SSL}</SSL>
+        <asynchronousSending>false</asynchronousSending>
+        <to>${mailTo}</to>
+        <from>${mailFrom}</from>
+        <subject>${mailSubject}</subject>
+        <layout class="ch.qos.logback.classic.html.HTMLLayout"/>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+    </appender>
+
+</included>

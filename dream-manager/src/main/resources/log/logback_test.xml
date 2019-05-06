@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property name="LOG_BASEDIR" value="/carmarket/logs/"/>
+	<property name="email_to" value="zhichatbug@siebrex.com" />
+	<property name="environment" value="test"/>
+
+	<contextName>${SYSTEM_NAME}</contextName>
+
+	<include resource="log/logback.xml"/>
+
+	<root level="INFO">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="INFO_FILE" />
+		<appender-ref ref="OPERATE_FILE"/>
+		<appender-ref ref="ERROR_FILE" />
+		<!--<appender-ref ref="EMAIL" />-->
+	</root>
+
+</configuration>
